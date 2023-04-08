@@ -1,8 +1,6 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "author": "Louis Ramos <louisramosdev@gmail.com>",
-  "license": "MIT",
+  "name": "app",
+  "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
     "sass": "^1.61.0"
