@@ -1,0 +1,10 @@
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: $padding;
+
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+}
