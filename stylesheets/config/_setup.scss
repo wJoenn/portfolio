@@ -10,9 +10,41 @@
 body {
   background-color: $background;
   color: $lightgrey;
+  display: flex;
+  flex-direction: column;
   font-family: $body-font;
+  min-height: 100vh;
+}
+
+footer {
+  bottom: 0;
+  padding: $padding;
+  position: fixed;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  width: 100%;
 }
 
 h1, h2, h3 {
   font-family: $headers-font;
+}
+
+section {
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, transparent, $lightgrey50, transparent);
 }
