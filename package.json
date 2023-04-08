@@ -10,7 +10,7 @@
     "parcel": "^2.8.3"
   },
   "scripts": {
-    "dev": "parcel watch index.html",
+    "dev": "parcel index.html --open",
     "build": "parcel build index.html"
   }
 }
