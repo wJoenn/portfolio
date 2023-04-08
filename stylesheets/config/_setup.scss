@@ -16,12 +16,6 @@ body {
   min-height: 100vh;
 }
 
-footer {
-  bottom: 0;
-  padding: $padding;
-  position: fixed;
-}
-
 main {
   display: flex;
   flex-grow: 1;
@@ -46,5 +40,5 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to right, transparent, $lightgrey50, transparent);
+  background: linear-gradient(to right, transparent, orange, transparent);
 }

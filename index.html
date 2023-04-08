@@ -10,17 +10,30 @@
     <script type="module" src="/javascript/application.js" defer></script>
   </head>
   <body>
+    <header>
+      <h1>Louis Ramos | Full-Stack Developer</h1>
+    </header>
+
     <main>
-      <section id="about">a</section>
-      <section id="projects">b</section>
-      <section id="contact">c</section>
+      <section id="about">
+        <h2>About.</h2>
+        <p>Hello, I'm Louis</p>
+      </section>
+      <section id="projects">
+        <h2>Projects.</h2>
+        <p>Artify</p>
+      </section>
+      <section id="contact">
+        <h2>Contact.</h2>
+        <p>Linked</p>
+      </section>
     </main>
 
     <footer>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+      <nav data-controller="navigation">
+        <a href="#about" class="active" data-navigation-target="link" data-action="click->navigation#click">About</a>
+        <a href="#projects" data-navigation-target="link" data-action="click->navigation#click">Projects</a>
+        <a href="#contact" data-navigation-target="link" data-action="click->navigation#click">Contact</a>
       </nav>
     </footer>
   </body>
