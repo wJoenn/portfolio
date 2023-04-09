@@ -51,9 +51,27 @@
           </div>
         </section>
 
-        <section class="page" id="projects" data-navigation-target="section">
-          <div class="gallery hidden">
-            <img src="images/artify.gif" alt="" class="artify">
+        <section class="page" id="projects" data-navigation-target="section" data-controller="gallery">
+          <div id="artify-gallery" class="gallery hidden" data-gallery-target="gallery" data-action="click->gallery#hideGallery">
+            <div class="scroller">
+              <img src="images/artify.gif" alt="" data-gallery-target="image">
+            </div>
+          </div>
+
+          <div id="rentart-gallery" class="gallery hidden" data-gallery-target="gallery" data-action="click->gallery#hideGallery">
+            <div class="scroller">
+              <img src="images/rentart/homepage.png" alt="" id="rentart-1" data-gallery-target="image" class="rentart">
+              <img src="images/rentart/index.png" alt="" id="rentart-2" data-gallery-target="image" class="rentart hidden">
+              <img src="images/rentart/show.png" alt="" id="rentart-3" data-gallery-target="image" class="rentart hidden">
+              <img src="images/rentart/form.png" alt="" id="rentart-4" data-gallery-target="image" class="rentart hidden">
+            </div>
+
+            <nav>
+              <img src="images/rentart/homepage.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-1" class="active">
+              <img src="images/rentart/index.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-2">
+              <img src="images/rentart/show.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-3">
+              <img src="images/rentart/form.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-4">
+            </nav>
           </div>
 
           <div class="container">
@@ -61,7 +79,7 @@
 
             <div class="content">
               <div id="artify" class="project">
-                <img src="images/artify.gif" alt="" class="artify">
+                <img src="images/artify.gif" alt="" data-action="click->gallery#showGallery" data-target="artify-gallery">
 
                 <div class="details">
                   <h3>Artify</h3>
@@ -84,7 +102,7 @@
                   </nav>
                 </div>
 
-                <img src="images/rentart.png" alt="">
+                <img src="images/rentart/homepage.png" alt="" data-action="click->gallery#showGallery" data-target="rentart-gallery">
               </div>
             </div>
           </div>
