@@ -2,6 +2,7 @@
   cursor: none;
   margin: 0;
   padding: 0;
+  text-shadow: $shadow;
 }
 
 *, *::before, *::after {
@@ -24,7 +25,6 @@ body {
   height: 1px;
   min-height: 100vh;
   overflow: hidden;
-  text-shadow: $shadow;
 }
 
 main {

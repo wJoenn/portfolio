@@ -3,6 +3,7 @@
   display: flex;
   font-size: 25px;
   justify-content: center;
+  position: relative;
 
   .container {
     display: flex;
@@ -42,21 +43,6 @@
           background-color: mediumpurple;
           transform: scale(1.1);
         }
-      }
-    }
-
-    .more {
-      align-items: baseline;
-      align-self: flex-end;
-      color: $lightgrey50;
-      display: flex;
-      font-size: 20px;
-      gap: 10px;
-      margin: -80px 20px 0;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: $lightgrey;
       }
     }
   }

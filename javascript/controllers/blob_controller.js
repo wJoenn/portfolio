@@ -15,7 +15,7 @@ export default class extends Controller {
         left: `${clientX}px`,
         top: `${clientY}px`
       }, {
-        duration: 1000,
+        duration: 3000,
         fill: "forwards"
       })
     })
