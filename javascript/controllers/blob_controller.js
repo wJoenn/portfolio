@@ -2,14 +2,16 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="blob"
 export default class extends Controller {
+  static targets = ["blob", "dot"]
+
   connect() {
     window.addEventListener("pointermove", event => {
       const { clientX, clientY } = event
 
-      // this.element.style.left = `${clientX}px`
-      // this.element.style.top = `${clientY}px`
+      this.dotTarget.style.left = `${clientX}px`
+      this.dotTarget.style.top = `${clientY}px`
 
-      this.element.animate({
+      this.blobTarget.animate({
         left: `${clientX}px`,
         top: `${clientY}px`
       }, {

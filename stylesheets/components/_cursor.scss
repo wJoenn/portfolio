@@ -21,6 +21,15 @@
   height: 500px;
   position: absolute;
   top: 50%;
-  // transition: left top 3s ease;
   translate: -50% -50%;
+}
+
+#dot {
+  background-color: $lightgrey50;
+  border-radius: 50%;
+  pointer-events: none;
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  z-index: 30;
 }

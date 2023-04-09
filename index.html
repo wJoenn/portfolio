@@ -10,7 +10,10 @@
     <script type="module" src="/javascript/application.js" defer></script>
   </head>
   <body>
-    <div id="blob" data-controller="blob"></div>
+    <div id="cursor" data-controller="blob">
+      <div id="blob" data-blob-target="blob"></div>
+      <div id="dot" data-blob-target="dot"></div>
+    </div>
 
     <div id="body" data-controller="navigation">
       <header>
