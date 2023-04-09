@@ -25,13 +25,38 @@
 
       <main data-action="scroll->navigation#handleScroll">
         <section id="about" data-navigation-target="section">
-          <h2>About.</h2>
-          <p>Hello, I'm Louis</p>
+          <div class="container">
+            <h2>About.</h2>
+
+            <div class="content">
+              <p>Bonjour, my name is Louis, I am a full-stack developer with a strong passion for computer technologies. I started my journey into web after transitioning from several years in the restaurant industry by the end of which I was teaching myself the basics of frontend development.<br/><br/>I recently completed a Full-Stack web development bootcamp at Le Wagon, where I gained expertise in building fully functional web applications in teams using Ruby on Rails, StimulusJS, PostgreSQL, Heroku, and more.<br/><br/> If you're looking for a dedicated and passionate full-stack developer with a strong work ethic, please feel free to connect with me.</p>
+
+              <div id="skills">
+                <h3>Skills.</h3>
+
+                <nav>
+                  <a href="https://www.w3schools.com/html/default.asp" target="_blank">HTML</a>
+                  <a href="https://sass-lang.com/" target="_blank">Scss</a>
+                  <a href="https://stimulus.hotwired.dev/" target="_blank">Stimulus.js</a>
+                </nav>
+
+                <nav>
+                  <a href="https://rubyonrails.org/" target="_blank">Ruby on Rails</a>
+                  <a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a>
+                  <a href="https://www.heroku.com/home" target="_blank">Heroku</a>
+                </nav>
+              </div>
+
+              <a href="#projects" class="more">See more <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
         </section>
+
         <section id="projects" data-navigation-target="section">
           <h2>Projects.</h2>
           <p>Artify</p>
         </section>
+
         <section id="contact" data-navigation-target="section">
           <h2>Contact.</h2>
           <p>Linked</p>

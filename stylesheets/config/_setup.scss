@@ -1,10 +1,20 @@
 * {
+  cursor: none;
   margin: 0;
   padding: 0;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 body {
@@ -14,7 +24,7 @@ body {
   height: 1px;
   min-height: 100vh;
   overflow: hidden;
-  text-shadow: 0 0 10px $background;
+  text-shadow: $shadow;
 }
 
 main {
@@ -36,12 +46,16 @@ section {
   width: 100%;
 }
 
+ul {
+  list-style: none;
+}
+
 ::-webkit-scrollbar {
   height: 1px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to right, transparent, mediumpurple, transparent);
+  background: linear-gradient(to right, transparent, $lightgrey, transparent);
 }
 
 #body {
