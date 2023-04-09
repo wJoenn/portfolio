@@ -12,31 +12,31 @@
   <body>
     <div id="blob" data-controller="blob"></div>
 
-    <div id="body">
+    <div id="body" data-controller="navigation">
       <header>
         <h1>Louis Ramos | Full-Stack Developer</h1>
       </header>
 
-      <main>
-        <section id="about">
+      <main data-action="scroll->navigation#handleScroll">
+        <section id="about" data-navigation-target="section">
           <h2>About.</h2>
           <p>Hello, I'm Louis</p>
         </section>
-        <section id="projects">
+        <section id="projects" data-navigation-target="section">
           <h2>Projects.</h2>
           <p>Artify</p>
         </section>
-        <section id="contact">
+        <section id="contact" data-navigation-target="section">
           <h2>Contact.</h2>
           <p>Linked</p>
         </section>
       </main>
 
       <footer>
-        <nav data-controller="navigation">
-          <a href="#about" class="active" data-navigation-target="link" data-action="click->navigation#click">About</a>
-          <a href="#projects" data-navigation-target="link" data-action="click->navigation#click">Projects</a>
-          <a href="#contact" data-navigation-target="link" data-action="click->navigation#click">Contact</a>
+        <nav>
+          <a href="#about" class="active" data-navigation-target="link">About</a>
+          <a href="#projects" data-navigation-target="link">Projects</a>
+          <a href="#contact" data-navigation-target="link">Contact</a>
         </nav>
       </footer>
     </div>
