@@ -1,0 +1,15 @@
+header {
+  h1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    span {
+      padding: 0.5rem 20px;
+
+      &:first-of-type {
+        border-right: 2px solid $lightgrey;
+        text-align: right;
+      }
+    }
+  }
+}
