@@ -64,10 +64,15 @@
       </main>
 
       <footer>
-        <nav>
-          <a href="#about" class="active" data-navigation-target="link">About</a>
-          <a href="#projects" data-navigation-target="link">Projects</a>
-          <a href="#contact" data-navigation-target="link">Contact</a>
+        <nav id="internal">
+          <a data-target="about" data-navigation-target="link" data-action="click->navigation#handleClick" class="active">About</a>
+          <a data-target="projects" data-navigation-target="link" data-action="click->navigation#handleClick">Projects</a>
+          <a data-target="contact" data-navigation-target="link" data-action="click->navigation#handleClick">Contact</a>
+        </nav>
+
+        <nav id="external">
+          <a href="https://github.com/wJoenn" target="_blank"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/louisramosdev/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
         </nav>
       </footer>
     </div>

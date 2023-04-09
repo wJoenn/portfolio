@@ -4,6 +4,12 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["link", "section"]
 
+  handleClick(event) {
+    event.preventDefault()
+    const targetId = event.target.dataset.target
+    this.sectionTargets.find(s => s.id === targetId).scrollIntoView()
+  }
+
   handleScroll() {
     const coords = this.sectionTargets.map(s => Math.abs(s.getBoundingClientRect().x))
     const index = coords.indexOf(Math.min(...coords))
