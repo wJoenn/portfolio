@@ -24,7 +24,7 @@
       </header>
 
       <main data-action="scroll->navigation#handleScroll">
-        <section id="about" data-navigation-target="section">
+        <section class="page" id="about" data-navigation-target="section">
           <div class="container">
             <h2>About.</h2>
 
@@ -51,14 +51,53 @@
           </div>
         </section>
 
-        <section id="projects" data-navigation-target="section">
-          <h2>Projects.</h2>
-          <p>Artify</p>
+        <section class="page" id="projects" data-navigation-target="section">
+          <div class="gallery hidden">
+            <img src="images/artify.gif" alt="" class="artify">
+          </div>
+
+          <div class="container">
+            <h2>Projects.</h2>
+
+            <div class="content">
+              <div id="artify" class="project">
+                <img src="images/artify.gif" alt="" class="artify">
+
+                <div class="details">
+                  <h3>Artify</h3>
+                  <p>A PWA to scan pictures of landmarks taken by users, recognise the content of the picture and return actual informations about said landmark. It does so by using both Google Cloud Vision's api, specifically it's landmark recognition feature, to scan images and Wikipedia's api to procedurally generate any missing landmark from our database.</p>
+
+                  <nav id="external">
+                    <a href="https://github.com/wJoenn/artify" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.artify.click/" target="_blank"><i class="fa-solid fa-globe"></i></a>
+                  </nav>
+                </div>
+              </div>
+
+              <div id="rentart" class="project">
+                <div class="details">
+                  <h3>Rentart.</h3>
+                  <p>A simple Airbnb copycat to rent art pieces for receptions</p>
+
+                  <nav id="external">
+                    <a href="https://github.com/wJoenn/rentart" target="_blank"><i class="fa-brands fa-github"></i></a>
+                  </nav>
+                </div>
+
+                <img src="images/rentart.png" alt="">
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section id="contact" data-navigation-target="section">
-          <h2>Contact.</h2>
-          <p>Linked</p>
+        <section class="page" id="contact" data-navigation-target="section">
+          <div class="container">
+            <h2>Contact.</h2>
+
+            <div class="content">
+              <p>Linked</p>
+            </div>
+          </div>
         </section>
       </main>
 

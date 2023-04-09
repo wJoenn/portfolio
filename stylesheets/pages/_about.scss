@@ -1,23 +1,4 @@
 #about {
-  align-items: center;
-  display: flex;
-  font-size: 25px;
-  justify-content: center;
-  position: relative;
-
-  .container {
-    display: flex;
-    gap: 50px;
-    height: max-content;
-    translate: 0 -10%;
-    width: Min($large, 80%);
-  }
-
-  h2 {
-    flex-shrink: 0;
-    width: 120px;
-  }
-
   .content {
     display: flex;
     flex-direction: column;

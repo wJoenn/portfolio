@@ -1,0 +1,16 @@
+.gallery {
+  align-items: center;
+  background-color: rgba(24, 26, 27, 0.8);
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 20;
+
+  img {
+    height: 80%;
+  }
+}

@@ -58,6 +58,10 @@ ul {
   background: linear-gradient(to right, transparent, $lightgrey, transparent);
 }
 
+.hidden {
+  display: none !important;
+}
+
 #body {
   backdrop-filter: blur(200px);
   display: flex;

@@ -1,0 +1,63 @@
+#projects {
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
+
+    .project {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      width: 100%;
+
+      img, .details {
+        border-radius: 10px;
+        box-shadow: $shadow;
+      }
+
+      img {
+        flex-shrink: 0;
+        height: 400px;
+        max-width: 400px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .details {
+        background-color: $darkgrey;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
+        padding: 20px;
+
+        p {
+          flex-grow: 1;
+        }
+      }
+
+      #external {
+        align-self: flex-end;
+        display: flex;
+        gap: 20px;
+
+        a {
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+
+    #artify h3 {
+      color: #9ab495;
+    }
+
+    #rentart h3 {
+      color: #ecc486
+    }
+  }
+}
