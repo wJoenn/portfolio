@@ -10,10 +10,11 @@
 body {
   background-color: $background;
   color: $lightgrey;
-  display: flex;
-  flex-direction: column;
   font-family: $body-font;
+  height: 1px;
   min-height: 100vh;
+  overflow: hidden;
+  text-shadow: 0 0 10px $background;
 }
 
 main {
@@ -40,5 +41,17 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to right, transparent, orange, transparent);
+  background: linear-gradient(to right, transparent, mediumpurple, transparent);
+}
+
+#body {
+  backdrop-filter: blur(200px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }

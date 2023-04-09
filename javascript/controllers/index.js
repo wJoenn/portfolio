@@ -1,4 +1,7 @@
 import { application } from "./application.js"
 
-import NavigationController from "./navigation.js"
+import BlobController from "./blob_controller.js"
+application.register("blob", BlobController)
+
+import NavigationController from "./navigation_controller.js"
 application.register("navigation", NavigationController)

@@ -10,31 +10,35 @@
     <script type="module" src="/javascript/application.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>Louis Ramos | Full-Stack Developer</h1>
-    </header>
+    <div id="blob" data-controller="blob"></div>
 
-    <main>
-      <section id="about">
-        <h2>About.</h2>
-        <p>Hello, I'm Louis</p>
-      </section>
-      <section id="projects">
-        <h2>Projects.</h2>
-        <p>Artify</p>
-      </section>
-      <section id="contact">
-        <h2>Contact.</h2>
-        <p>Linked</p>
-      </section>
-    </main>
+    <div id="body">
+      <header>
+        <h1>Louis Ramos | Full-Stack Developer</h1>
+      </header>
 
-    <footer>
-      <nav data-controller="navigation">
-        <a href="#about" class="active" data-navigation-target="link" data-action="click->navigation#click">About</a>
-        <a href="#projects" data-navigation-target="link" data-action="click->navigation#click">Projects</a>
-        <a href="#contact" data-navigation-target="link" data-action="click->navigation#click">Contact</a>
-      </nav>
-    </footer>
+      <main>
+        <section id="about">
+          <h2>About.</h2>
+          <p>Hello, I'm Louis</p>
+        </section>
+        <section id="projects">
+          <h2>Projects.</h2>
+          <p>Artify</p>
+        </section>
+        <section id="contact">
+          <h2>Contact.</h2>
+          <p>Linked</p>
+        </section>
+      </main>
+
+      <footer>
+        <nav data-controller="navigation">
+          <a href="#about" class="active" data-navigation-target="link" data-action="click->navigation#click">About</a>
+          <a href="#projects" data-navigation-target="link" data-action="click->navigation#click">Projects</a>
+          <a href="#contact" data-navigation-target="link" data-action="click->navigation#click">Contact</a>
+        </nav>
+      </footer>
+    </div>
   </body>
 </html>
