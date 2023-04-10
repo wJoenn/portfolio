@@ -566,16 +566,19 @@ var _aosController = require("./aos_controller");
 var _aosControllerDefault = parcelHelpers.interopDefault(_aosController);
 var _blobControllerJs = require("./blob_controller.js");
 var _blobControllerJsDefault = parcelHelpers.interopDefault(_blobControllerJs);
+var _contactFormControllerJs = require("./contact_form_controller.js");
+var _contactFormControllerJsDefault = parcelHelpers.interopDefault(_contactFormControllerJs);
 var _galleryControllerJs = require("./gallery_controller.js");
 var _galleryControllerJsDefault = parcelHelpers.interopDefault(_galleryControllerJs);
 var _navigationControllerJs = require("./navigation_controller.js");
 var _navigationControllerJsDefault = parcelHelpers.interopDefault(_navigationControllerJs);
 (0, _applicationJs.application).register("aos", (0, _aosControllerDefault.default));
 (0, _applicationJs.application).register("blob", (0, _blobControllerJsDefault.default));
+(0, _applicationJs.application).register("contact-form", (0, _contactFormControllerJsDefault.default));
 (0, _applicationJs.application).register("gallery", (0, _galleryControllerJsDefault.default));
 (0, _applicationJs.application).register("navigation", (0, _navigationControllerJsDefault.default));
 
-},{"./application.js":"iXxw6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./blob_controller.js":"bXMXM","./navigation_controller.js":"9Pyrf","./aos_controller":"4gxB0","./gallery_controller.js":"11gOK"}],"iXxw6":[function(require,module,exports) {
+},{"./application.js":"iXxw6","./aos_controller":"4gxB0","./blob_controller.js":"bXMXM","./gallery_controller.js":"11gOK","./navigation_controller.js":"9Pyrf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./contact_form_controller.js":"c0qwA"}],"iXxw6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "application", ()=>application);
@@ -2861,58 +2864,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"bXMXM":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _stimulus = require("@hotwired/stimulus");
-// Connects to data-controller="blob"
-exports.default = class extends (0, _stimulus.Controller) {
-    static targets = [
-        "blob",
-        "dot"
-    ];
-    connect() {
-        window.addEventListener("pointermove", (event)=>{
-            const { clientX , clientY  } = event;
-            this.dotTarget.style.left = `${clientX}px`;
-            this.dotTarget.style.top = `${clientY}px`;
-            this.blobTarget.animate({
-                left: `${clientX}px`,
-                top: `${clientY}px`
-            }, {
-                duration: 3000,
-                fill: "forwards"
-            });
-        });
-    }
-};
-
-},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Pyrf":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _stimulus = require("@hotwired/stimulus");
-// Connects to data-controller="navigation"
-exports.default = class extends (0, _stimulus.Controller) {
-    static targets = [
-        "link",
-        "section"
-    ];
-    handleClick(event) {
-        event.preventDefault();
-        const targetId = event.target.dataset.target;
-        this.sectionTargets.find((s)=>s.id === targetId).scrollIntoView();
-    }
-    handleScroll() {
-        const coords = this.sectionTargets.map((s)=>Math.abs(s.getBoundingClientRect().x));
-        const index = coords.indexOf(Math.min(...coords));
-        if (!this.linkTargets[index].classList.contains("active")) {
-            this.linkTargets.forEach((e)=>e.classList.remove("active"));
-            this.linkTargets[index].classList.add("active");
-        }
-    }
-};
-
-},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4gxB0":[function(require,module,exports) {
+},{}],"4gxB0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _stimulus = require("@hotwired/stimulus");
@@ -3367,7 +3319,33 @@ exports.default = class extends (0, _stimulus.Controller) {
     ]);
 });
 
-},{}],"11gOK":[function(require,module,exports) {
+},{}],"bXMXM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _stimulus = require("@hotwired/stimulus");
+// Connects to data-controller="blob"
+exports.default = class extends (0, _stimulus.Controller) {
+    static targets = [
+        "blob",
+        "dot"
+    ];
+    connect() {
+        window.addEventListener("pointermove", (event)=>{
+            const { clientX , clientY  } = event;
+            this.dotTarget.style.left = `${clientX}px`;
+            this.dotTarget.style.top = `${clientY}px`;
+            this.blobTarget.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            }, {
+                duration: 3000,
+                fill: "forwards"
+            });
+        });
+    }
+};
+
+},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"11gOK":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _stimulus = require("@hotwired/stimulus");
@@ -3399,6 +3377,100 @@ exports.default = class extends (0, _stimulus.Controller) {
     showGallery(event) {
         const id = event.target.dataset.target;
         this.galleryTargets.find((g)=>g.id === id).classList.remove("hidden");
+    }
+};
+
+},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Pyrf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _stimulus = require("@hotwired/stimulus");
+// Connects to data-controller="navigation"
+exports.default = class extends (0, _stimulus.Controller) {
+    static targets = [
+        "link",
+        "section"
+    ];
+    handleClick(event) {
+        event.preventDefault();
+        const targetId = event.target.dataset.target;
+        this.sectionTargets.find((s)=>s.id === targetId).scrollIntoView();
+    }
+    handleScroll() {
+        const coords = this.sectionTargets.map((s)=>Math.abs(s.getBoundingClientRect().x));
+        const index = coords.indexOf(Math.min(...coords));
+        if (!this.linkTargets[index].classList.contains("active")) {
+            this.linkTargets.forEach((e)=>e.classList.remove("active"));
+            this.linkTargets[index].classList.add("active");
+        }
+    }
+};
+
+},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c0qwA":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _stimulus = require("@hotwired/stimulus");
+// Connects to data-controller="contact-form"
+exports.default = class extends (0, _stimulus.Controller) {
+    static targets = [
+        "error",
+        "success"
+    ];
+    handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        this.params = new FormData();
+        if (this.#validateInputsValues(data)) this.#sendMail();
+    }
+    #buildParams(data) {
+        this.params.append("email", data.get("email"));
+        const message = `${data.get("message")}\n\nMessage sent by ${data.get("firstName")} ${data.get("lastName")}\nFrom ${data.get("company")}`;
+        this.params.append("message", message);
+    }
+    #sendMail() {
+        fetch("https://formspree.io/f/xbjepgvq", {
+            method: "POST",
+            body: this.params,
+            headers: {
+                "Accept": "application/json"
+            }
+        }).then((res)=>this.#updateFormStatus(res)).catch(()=>this.errorTarget.innerHTML = "There was an error sumbitting your form. Feel free to try again or contact me on Linkedin.");
+    }
+    #updateFormStatus(res) {
+        if (res.ok) {
+            this.errorTarget.innerText = "";
+            this.successTarget.innerText = "Your email was correctly sent. I'll make sure to respond in the shortest delay.";
+            this.element.reset();
+        } else res.json().then((data)=>{
+            if (data["errors"]) this.errorTarget.innerHTML = data["errors"].map((e)=>e["message"]).join(", ");
+            else this.errorTarget.innerHTML = "There was an error sumbitting your form. Feel free to try again or contact me on Linkedin.";
+        });
+    }
+    #validateEmail(email) {
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+    }
+    #validateInputsValues(data1) {
+        if (!this.#validatePresenceOf([
+            ...data1.values()
+        ])) {
+            this.errorTarget.innerText = "Please fill out the form completly";
+            return false;
+        }
+        if (!this.#validateEmail(data1.get("email"))) {
+            this.errorTarget.innerText = "Please use a valid email adress";
+            return false;
+        }
+        if (!this.#validateMessage(data1.get("message"))) {
+            this.errorTarget.innerText = "Please explain the reason you're contacting me in a bit more detail";
+            return false;
+        }
+        this.#buildParams(data1);
+        return true;
+    }
+    #validateMessage(message) {
+        return message.length > 50;
+    }
+    #validatePresenceOf(values) {
+        return !values.includes("");
     }
 };
 
