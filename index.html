@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="stylesheets/application.scss">
+    <link rel="stylesheet" href="/stylesheets/application.scss">
     <script type="module" src="/javascript/application.js" defer></script>
   </head>
   <body>
+    <!-- Cursor -->
     <div id="cursor" data-controller="blob">
       <div id="blob" data-blob-target="blob"></div>
       <div id="dot" data-blob-target="dot"></div>
@@ -24,6 +25,7 @@
       </header>
 
       <main data-action="scroll->navigation#handleScroll">
+        <!-- About section -->
         <section class="page" id="about" data-navigation-target="section">
           <div class="container">
             <h2>About.</h2>
@@ -51,26 +53,27 @@
           </div>
         </section>
 
+        <!-- Projects section -->
         <section class="page" id="projects" data-navigation-target="section" data-controller="gallery">
           <div id="artify-gallery" class="gallery hidden" data-gallery-target="gallery" data-action="click->gallery#hideGallery">
             <div class="scroller">
-              <img src="images/artify.gif" alt="" data-gallery-target="image">
+              <img src="/images/artify.gif" alt="" data-gallery-target="image">
             </div>
           </div>
 
           <div id="rentart-gallery" class="gallery hidden" data-gallery-target="gallery" data-action="click->gallery#hideGallery">
             <div class="scroller">
-              <img src="images/rentart/homepage.png" alt="" id="rentart-1" data-gallery-target="image" class="rentart">
-              <img src="images/rentart/index.png" alt="" id="rentart-2" data-gallery-target="image" class="rentart hidden">
-              <img src="images/rentart/show.png" alt="" id="rentart-3" data-gallery-target="image" class="rentart hidden">
-              <img src="images/rentart/form.png" alt="" id="rentart-4" data-gallery-target="image" class="rentart hidden">
+              <img src="/images/rentart/homepage.png" alt="" id="rentart-1" data-gallery-target="image" class="rentart">
+              <img src="/images/rentart/index.png" alt="" id="rentart-2" data-gallery-target="image" class="rentart hidden">
+              <img src="/images/rentart/show.png" alt="" id="rentart-3" data-gallery-target="image" class="rentart hidden">
+              <img src="/images/rentart/form.png" alt="" id="rentart-4" data-gallery-target="image" class="rentart hidden">
             </div>
 
             <nav>
-              <img src="images/rentart/homepage.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-1" class="active">
-              <img src="images/rentart/index.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-2">
-              <img src="images/rentart/show.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-3">
-              <img src="images/rentart/form.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-4">
+              <img src="/images/rentart/homepage.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-1" class="active">
+              <img src="/images/rentart/index.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-2">
+              <img src="/images/rentart/show.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-3">
+              <img src="/images/rentart/form.png" alt="" data-gallery-target="snippet" data-action="click->gallery#handleClick" data-target="rentart-4">
             </nav>
           </div>
 
@@ -79,7 +82,7 @@
 
             <div class="content">
               <div id="artify" class="project">
-                <img src="images/artify.gif" alt="" data-action="click->gallery#showGallery" data-target="artify-gallery">
+                <img src="/images/artify.gif" alt="" data-action="click->gallery#showGallery" data-target="artify-gallery">
 
                 <div class="details">
                   <h3>Artify</h3>
@@ -102,18 +105,38 @@
                   </nav>
                 </div>
 
-                <img src="images/rentart/homepage.png" alt="" data-action="click->gallery#showGallery" data-target="rentart-gallery">
+                <img src="/images/rentart/homepage.png" alt="" data-action="click->gallery#showGallery" data-target="rentart-gallery">
               </div>
             </div>
           </div>
         </section>
 
+        <!-- Contact section -->
         <section class="page" id="contact" data-navigation-target="section">
           <div class="container">
             <h2>Contact.</h2>
 
             <div class="content">
-              <p>Linked</p>
+              <h3>Do you want to collaborate ?</h3>
+              <p id="linkedin-paragraph"><a href="https://www.linkedin.com/in/louisramosdev/" target="_blank">Connect</a> with me on Linkedin</p>
+              <form data-controller="contact-form" data-action="submit->contact-form#handleSubmit">
+                <p>Or send me an email</p>
+
+                <div>
+                  <input type="text" name="firstName" placeholder="First Name">
+                  <input type="text" name="lastName" placeholder="Last Name">
+                  <input type="text" name="company" placeholder="Company">
+                </div>
+                <input type="email" name="email" id="email" placeholder="Email">
+                <textarea name="message" id="message" cols="30" rows="5"></textarea>
+
+                <div id="notice">
+                  <p data-contact-form-target="error" class="error"></p>
+                  <p data-contact-form-target="success"></p>
+                </div>
+
+                <input type="submit">
+              </form>
             </div>
           </div>
         </section>

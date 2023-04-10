@@ -1,0 +1,64 @@
+#contact {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: 100%;
+
+      input {
+        width: calc(33% - 13.33px);
+      }
+    }
+
+    input, textarea {
+      background-color: $darkgrey;
+      border: none;
+      border-radius: 10px;
+      box-shadow: inset 0 0 0px black, $shadow;
+      color: inherit;
+      font: inherit;
+      padding: $padding;
+      transition: box-shadow 0.3s ease;
+
+      &:focus {
+        box-shadow: inset 0 0 10px black, $shadow;
+        outline: none;
+      }
+    }
+
+    #notice p {
+      font-size: 20px;
+
+      &.error {
+        color: rgb(116, 47, 47);
+      }
+    }
+  }
+
+  .content {
+    max-width: 100%;
+
+    a, input[type="submit"] {
+      background-color: $darkgrey;
+      border-radius: 10px;
+      padding: $padding;
+      transition: all 0.3s ease;
+      width: max-content;
+
+      &:hover {
+        background-color: mediumpurple;
+        box-shadow: $shadow;
+      }
+    }
+
+    h3 {
+      margin: -5px 0 20px;
+    }
+  }
+}
