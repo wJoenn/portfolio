@@ -17,11 +17,11 @@
     }
 
     input, textarea {
-      background-color: $darkgrey;
+      background-color: $darkgrey !important;
       border: none;
       border-radius: 10px;
       box-shadow: inset 0 0 0px black, $shadow;
-      color: inherit;
+      color: inherit !important;
       font: inherit;
       padding: $padding;
       transition: box-shadow 0.3s ease;
@@ -29,6 +29,10 @@
       &:focus {
         box-shadow: inset 0 0 10px black, $shadow;
         outline: none;
+      }
+
+      &:-webkit-autofill {
+        transition: background-color 600000s 0s, color 600000s 0s;
       }
     }
 

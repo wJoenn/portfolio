@@ -12,5 +12,8 @@ application.register("contact-form", ContactFormController)
 import GalleryController from "./gallery_controller.js"
 application.register("gallery", GalleryController)
 
+import HackerTextController from "./hacker_text_controller.js"
+application.register("hacker-text", HackerTextController)
+
 import NavigationController from "./navigation_controller.js"
 application.register("navigation", NavigationController)
