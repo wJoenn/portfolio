@@ -570,15 +570,18 @@ var _contactFormControllerJs = require("./contact_form_controller.js");
 var _contactFormControllerJsDefault = parcelHelpers.interopDefault(_contactFormControllerJs);
 var _galleryControllerJs = require("./gallery_controller.js");
 var _galleryControllerJsDefault = parcelHelpers.interopDefault(_galleryControllerJs);
+var _hackerTextControllerJs = require("./hacker_text_controller.js");
+var _hackerTextControllerJsDefault = parcelHelpers.interopDefault(_hackerTextControllerJs);
 var _navigationControllerJs = require("./navigation_controller.js");
 var _navigationControllerJsDefault = parcelHelpers.interopDefault(_navigationControllerJs);
 (0, _applicationJs.application).register("aos", (0, _aosControllerDefault.default));
 (0, _applicationJs.application).register("blob", (0, _blobControllerJsDefault.default));
 (0, _applicationJs.application).register("contact-form", (0, _contactFormControllerJsDefault.default));
 (0, _applicationJs.application).register("gallery", (0, _galleryControllerJsDefault.default));
+(0, _applicationJs.application).register("hacker-text", (0, _hackerTextControllerJsDefault.default));
 (0, _applicationJs.application).register("navigation", (0, _navigationControllerJsDefault.default));
 
-},{"./application.js":"iXxw6","./aos_controller":"4gxB0","./blob_controller.js":"bXMXM","./gallery_controller.js":"11gOK","./navigation_controller.js":"9Pyrf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./contact_form_controller.js":"c0qwA"}],"iXxw6":[function(require,module,exports) {
+},{"./application.js":"iXxw6","./aos_controller":"4gxB0","./blob_controller.js":"bXMXM","./gallery_controller.js":"11gOK","./navigation_controller.js":"9Pyrf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./contact_form_controller.js":"c0qwA","./hacker_text_controller.js":"bZich"}],"iXxw6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "application", ()=>application);
@@ -3471,6 +3474,33 @@ exports.default = class extends (0, _stimulus.Controller) {
     }
     #validatePresenceOf(values) {
         return !values.includes("");
+    }
+};
+
+},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bZich":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _stimulus = require("@hotwired/stimulus");
+// Connects to data-controller="hacker-text"
+exports.default = class extends (0, _stimulus.Controller) {
+    static values = {
+        text: String
+    };
+    connect() {
+        this.letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        this.#shuffleWord();
+        setInterval(()=>this.#shuffleWord(), 10000);
+    }
+    #shuffleWord() {
+        let i = 0;
+        const interval = setInterval(()=>{
+            this.element.innerText = this.element.innerText.split("").map((letter, index)=>{
+                if (index < i) return this.textValue[index];
+                return this.letters[Math.floor(Math.random() * 26)];
+            }).join("");
+            if (i >= this.textValue.length) clearInterval(interval);
+            i += 0.5;
+        }, 30);
     }
 };
 
