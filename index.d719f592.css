@@ -8941,14 +8941,14 @@ ul {
 }
 
 #contact form input, #contact form textarea {
+  color: inherit;
   font: inherit;
+  background-color: #222425;
   border: none;
   border-radius: 10px;
   padding: .5rem 1rem;
   transition: box-shadow .3s;
   box-shadow: inset 0 0 #000, 0 0 10px #00000080;
-  color: inherit !important;
-  background-color: #222425 !important;
 }
 
 #contact form input:focus, #contact form textarea:focus {

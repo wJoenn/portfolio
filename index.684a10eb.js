@@ -581,7 +581,7 @@ var _navigationControllerJsDefault = parcelHelpers.interopDefault(_navigationCon
 (0, _applicationJs.application).register("hacker-text", (0, _hackerTextControllerJsDefault.default));
 (0, _applicationJs.application).register("navigation", (0, _navigationControllerJsDefault.default));
 
-},{"./application.js":"iXxw6","./aos_controller":"4gxB0","./blob_controller.js":"bXMXM","./gallery_controller.js":"11gOK","./navigation_controller.js":"9Pyrf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./contact_form_controller.js":"c0qwA","./hacker_text_controller.js":"bZich"}],"iXxw6":[function(require,module,exports) {
+},{"./application.js":"iXxw6","./aos_controller":"4gxB0","./blob_controller.js":"bXMXM","./contact_form_controller.js":"c0qwA","./gallery_controller.js":"11gOK","./hacker_text_controller.js":"bZich","./navigation_controller.js":"9Pyrf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iXxw6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "application", ()=>application);
@@ -3348,66 +3348,6 @@ exports.default = class extends (0, _stimulus.Controller) {
     }
 };
 
-},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"11gOK":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _stimulus = require("@hotwired/stimulus");
-// Connects to data-controller="gallery"
-exports.default = class extends (0, _stimulus.Controller) {
-    static targets = [
-        "gallery",
-        "image",
-        "snippet"
-    ];
-    connect() {
-        window.addEventListener("keydown", (event)=>{
-            if (event.key === "Escape") this.galleryTargets.forEach((g)=>g.classList.add("hidden"));
-        });
-    }
-    handleClick(event) {
-        this.snippetTargets.forEach((s)=>{
-            s === event.target ? s.classList.add("active") : s.classList.remove("active");
-        });
-        const id = event.target.dataset.target;
-        const images = this.imageTargets.filter((i)=>i.classList.contains("rentart"));
-        images.forEach((i)=>{
-            i.id === id ? i.classList.remove("hidden") : i.classList.add("hidden");
-        });
-    }
-    hideGallery(event) {
-        if (event.currentTarget === event.target) this.galleryTargets.forEach((g)=>g.classList.add("hidden"));
-    }
-    showGallery(event) {
-        const id = event.target.dataset.target;
-        this.galleryTargets.find((g)=>g.id === id).classList.remove("hidden");
-    }
-};
-
-},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Pyrf":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _stimulus = require("@hotwired/stimulus");
-// Connects to data-controller="navigation"
-exports.default = class extends (0, _stimulus.Controller) {
-    static targets = [
-        "link",
-        "section"
-    ];
-    handleClick(event) {
-        event.preventDefault();
-        const targetId = event.target.dataset.target;
-        this.sectionTargets.find((s)=>s.id === targetId).scrollIntoView();
-    }
-    handleScroll() {
-        const coords = this.sectionTargets.map((s)=>Math.abs(s.getBoundingClientRect().x));
-        const index = coords.indexOf(Math.min(...coords));
-        if (!this.linkTargets[index].classList.contains("active")) {
-            this.linkTargets.forEach((e)=>e.classList.remove("active"));
-            this.linkTargets[index].classList.add("active");
-        }
-    }
-};
-
 },{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c0qwA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -3477,6 +3417,41 @@ exports.default = class extends (0, _stimulus.Controller) {
     }
 };
 
+},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"11gOK":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _stimulus = require("@hotwired/stimulus");
+// Connects to data-controller="gallery"
+exports.default = class extends (0, _stimulus.Controller) {
+    static targets = [
+        "gallery",
+        "image",
+        "snippet"
+    ];
+    connect() {
+        window.addEventListener("keydown", (event)=>{
+            if (event.key === "Escape") this.galleryTargets.forEach((g)=>g.classList.add("hidden"));
+        });
+    }
+    handleClick(event) {
+        this.snippetTargets.forEach((s)=>{
+            s === event.target ? s.classList.add("active") : s.classList.remove("active");
+        });
+        const id = event.target.dataset.target;
+        const images = this.imageTargets.filter((i)=>i.classList.contains("rentart"));
+        images.forEach((i)=>{
+            i.id === id ? i.classList.remove("hidden") : i.classList.add("hidden");
+        });
+    }
+    hideGallery(event) {
+        if (event.currentTarget === event.target) this.galleryTargets.forEach((g)=>g.classList.add("hidden"));
+    }
+    showGallery(event) {
+        const id = event.target.dataset.target;
+        this.galleryTargets.find((g)=>g.id === id).classList.remove("hidden");
+    }
+};
+
 },{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bZich":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -3501,6 +3476,31 @@ exports.default = class extends (0, _stimulus.Controller) {
             if (i >= this.textValue.length) clearInterval(interval);
             i += 0.5;
         }, 30);
+    }
+};
+
+},{"@hotwired/stimulus":"byyBs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Pyrf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _stimulus = require("@hotwired/stimulus");
+// Connects to data-controller="navigation"
+exports.default = class extends (0, _stimulus.Controller) {
+    static targets = [
+        "link",
+        "section"
+    ];
+    handleClick(event) {
+        event.preventDefault();
+        const targetId = event.target.dataset.target;
+        this.sectionTargets.find((s)=>s.id === targetId).scrollIntoView();
+    }
+    handleScroll() {
+        const coords = this.sectionTargets.map((s)=>Math.abs(s.getBoundingClientRect().x));
+        const index = coords.indexOf(Math.min(...coords));
+        if (!this.linkTargets[index].classList.contains("active")) {
+            this.linkTargets.forEach((e)=>e.classList.remove("active"));
+            this.linkTargets[index].classList.add("active");
+        }
     }
 };
 
