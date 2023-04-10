@@ -3,6 +3,8 @@ header {
 
   h1 {
     display: grid;
+    font-family: "Space Mono", monospace;
+    font-size: 35px;
     grid-template-columns: 1fr 1fr;
 
     span {
