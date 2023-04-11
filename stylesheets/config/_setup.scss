@@ -32,6 +32,7 @@ main {
   flex-grow: 1;
   overflow: hidden;
   overflow-x: scroll;
+  scrollbar-width: none;
   scroll-behavior: smooth;
   width: 100%;
 }
@@ -63,7 +64,7 @@ ul {
 }
 
 #body {
-  backdrop-filter: blur(200px);
+  backdrop-filter: blur(150px);
   display: flex;
   flex-direction: column;
   height: 100%;
