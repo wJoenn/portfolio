@@ -3333,7 +3333,7 @@ exports.default = class extends (0, _stimulus.Controller) {
         "dot"
     ];
     connect() {
-        window.addEventListener("pointermove", (event)=>{
+        window.addEventListener("mousemove", (event)=>{
             const { clientX , clientY  } = event;
             this.dotTarget.style.left = `${clientX}px`;
             this.dotTarget.style.top = `${clientY}px`;

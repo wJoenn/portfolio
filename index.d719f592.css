@@ -9244,8 +9244,7 @@ header {
 
 header h1 {
   grid-template-columns: 1fr 1fr;
-  font-family: Space Mono, monospace;
-  font-size: 26px;
+  font-size: 25px;
   display: grid;
 }
 
