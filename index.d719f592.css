@@ -982,6 +982,7 @@ body {
 }
 
 main {
+  scrollbar-width: none;
   scroll-behavior: smooth;
   width: 100%;
   flex-grow: 1;
@@ -1017,8 +1018,8 @@ ul {
 }
 
 #body {
-  -webkit-backdrop-filter: blur(200px);
-  backdrop-filter: blur(200px);
+  -webkit-backdrop-filter: blur(150px);
+  backdrop-filter: blur(150px);
   height: 100%;
   width: 100%;
   z-index: 10;
@@ -8961,7 +8962,7 @@ ul {
 }
 
 #contact form #notice p {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 #contact form #notice p.error {
@@ -9233,7 +9234,6 @@ footer #internal a.active {
 .gallery .scroller img {
   height: 60vh;
   object-fit: contain;
-  width: max-content;
   background-color: #222425;
   flex-shrink: 0;
 }
