@@ -17,7 +17,7 @@
 
       img {
         flex-shrink: 0;
-        height: 400px;
+        height: min(calc((100vh - 200px) / 2 - 10px), 300px);
         max-width: 400px;
         object-fit: cover;
         object-position: center;

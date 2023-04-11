@@ -14,7 +14,7 @@
         background-color: $darkgrey;
         border-radius: 10px;
         box-shadow: $shadow;
-        font-size: 16px;
+        font-size: 12px;
         min-width: 75px;
         padding: $padding;
         text-align: center;
@@ -24,6 +24,10 @@
           background-color: mediumpurple;
           transform: scale(1.1);
         }
+
+        // @media screen and (min-width: 1500px) {
+        //   font-size: 16px;
+        // }
       }
     }
   }

@@ -5,26 +5,35 @@
 .page {
   align-items: center;
   display: flex;
-  font-size: 25px;
+  font-size: 16px;
   justify-content: center;
   position: relative;
 
   h2 {
     flex-shrink: 0;
-    margin-top: -15px;
+    margin-top: -10px;
     text-align: right;
-    width: 160px;
+    width: 110px;
   }
 
   .container {
     display: flex;
     gap: 50px;
     height: max-content;
-    translate: 0 -10%;
-    width: Min(calc($large), 80%);
+    max-height: calc(100vh - 200px);
+    translate: 0 -50px;
+    width: Min(900px, 95%);
   }
 
   .content {
     flex-grow: 1;
+  }
+
+  @media screen and (min-width: 1500px) {
+    font-size: 19px;
+
+    h2 {
+      width: 120px;
+    }
   }
 }
