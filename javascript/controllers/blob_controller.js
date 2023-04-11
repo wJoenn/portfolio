@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["blob", "dot"]
 
   connect() {
-    window.addEventListener("pointermove", event => {
+    window.addEventListener("mousemove", event => {
       const { clientX, clientY } = event
 
       this.dotTarget.style.left = `${clientX}px`
