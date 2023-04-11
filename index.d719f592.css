@@ -8912,7 +8912,7 @@ ul {
   background-color: #222425;
   border-radius: 10px;
   padding: .5rem 1rem;
-  font-size: 16px;
+  font-size: 12px;
   transition: all .5s;
   box-shadow: 0 0 10px #00000080;
 }
@@ -9008,7 +9008,7 @@ ul {
 }
 
 #projects .content .project img {
-  height: 400px;
+  height: min(50vh - 110px, 300px);
   max-width: 400px;
   object-fit: cover;
   object-position: center;
@@ -9053,28 +9053,39 @@ ul {
 .page {
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 16px;
   display: flex;
   position: relative;
 }
 
 .page h2 {
   text-align: right;
-  width: 160px;
+  width: 110px;
   flex-shrink: 0;
-  margin-top: -15px;
+  margin-top: -10px;
 }
 
 .page .container {
   height: max-content;
-  width: min(996px, 80%);
+  max-height: calc(100vh - 200px);
+  width: min(900px, 95%);
   gap: 50px;
   display: flex;
-  translate: 0 -10%;
+  translate: 0 -50px;
 }
 
 .page .content {
   flex-grow: 1;
+}
+
+@media screen and (min-width: 1500px) {
+  .page {
+    font-size: 19px;
+  }
+
+  .page h2 {
+    width: 120px;
+  }
 }
 
 @keyframes rotate {
@@ -9116,7 +9127,6 @@ ul {
 footer {
   width: 100%;
   gap: 20px;
-  margin-bottom: 30px;
   padding: .5rem 1rem;
   position: fixed;
   bottom: 0;
@@ -9126,7 +9136,7 @@ footer #external {
   justify-content: flex-end;
   gap: 20px;
   margin: 20px 30px 0;
-  font-size: 30px;
+  font-size: 23px;
   display: flex;
 }
 
@@ -9148,7 +9158,7 @@ footer #internal a {
   color: #d3d3d380;
   width: 100px;
   padding: 0 15px;
-  font-size: 20px;
+  font-size: 16px;
   transition: all .3s;
 }
 
@@ -9213,7 +9223,6 @@ footer #internal a.active {
 }
 
 .gallery .scroller {
-  height: 800px;
   border-radius: 10px;
   gap: 20px;
   display: flex;
@@ -9222,7 +9231,7 @@ footer #internal a.active {
 }
 
 .gallery .scroller img {
-  height: 800px;
+  height: 60vh;
   object-fit: contain;
   width: max-content;
   background-color: #222425;
@@ -9236,7 +9245,7 @@ header {
 header h1 {
   grid-template-columns: 1fr 1fr;
   font-family: Space Mono, monospace;
-  font-size: 35px;
+  font-size: 26px;
   display: grid;
 }
 
