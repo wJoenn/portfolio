@@ -3333,18 +3333,28 @@ exports.default = class extends (0, _stimulus.Controller) {
         "dot"
     ];
     connect() {
+        this.isSafari = navigator.userAgent.indexOf("Chrome") === -1 && navigator.userAgent.indexOf("Safari") > -1;
         window.addEventListener("mousemove", (event)=>{
             const { clientX , clientY  } = event;
-            this.dotTarget.style.left = `${clientX}px`;
-            this.dotTarget.style.top = `${clientY}px`;
-            this.blobTarget.animate({
-                left: `${clientX}px`,
-                top: `${clientY}px`
-            }, {
-                duration: 3000,
-                fill: "forwards"
-            });
+            this.#moveDot(clientX, clientY);
+            this.#moveBlob(clientX, clientY);
         });
+    }
+    #moveBlob(x, y) {
+        if (this.isSafari) {
+            this.blobTarget.style.left = `${x}px`;
+            this.blobTarget.style.top = `${y}px`;
+        } else this.blobTarget.animate({
+            left: `${x}px`,
+            top: `${y}px`
+        }, {
+            duration: 3000,
+            fill: "forwards"
+        });
+    }
+    #moveDot(x1, y1) {
+        this.dotTarget.style.left = `${x1}px`;
+        this.dotTarget.style.top = `${y1}px`;
     }
 };
 
@@ -3352,6 +3362,13 @@ exports.default = class extends (0, _stimulus.Controller) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _stimulus = require("@hotwired/stimulus");
+const FORM_URL = "https://formspree.io/f/xbjepgvq";
+const ERROR_MESSAGES = {
+    incompleteForm: "Please fill out the form completely",
+    invalidEmail: "Please use a valid email address",
+    shortMessage: "Please explain the reason you're contacting me in a bit more detail",
+    submitError: "There was an error submitting your form. Feel free to try again or contact me on Linkedin."
+};
 // Connects to data-controller="contact-form"
 exports.default = class extends (0, _stimulus.Controller) {
     static targets = [
@@ -3360,59 +3377,63 @@ exports.default = class extends (0, _stimulus.Controller) {
     ];
     handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target);
-        this.params = new FormData();
-        if (this.#validateInputsValues(data)) this.#sendMail();
+        const formData = new FormData(event.target);
+        if (this.#validateFormData(formData)) this.#sendMail(formData);
     }
     #buildParams(data) {
-        this.params.append("email", data.get("email"));
+        const params = new FormData();
         const message = `${data.get("message")}\n\nMessage sent by ${data.get("firstName")} ${data.get("lastName")}\nFrom ${data.get("company")}`;
-        this.params.append("message", message);
+        params.append("email", data.get("email"));
+        params.append("message", message);
+        return params;
     }
-    #sendMail() {
-        fetch("https://formspree.io/f/xbjepgvq", {
+    #handleFormErrors(res) {
+        res.json().then((data)=>{
+            if (data["errors"]) this.errorTarget.innerHTML = data["errors"].map((e)=>e["message"]).join(", ");
+            else this.errorTarget.innerHTML = ERROR_MESSAGES.submitError;
+        });
+    }
+    #handleFormSuccess() {
+        this.errorTarget.innerText = "";
+        this.successTarget.innerText = "Your email was correctly sent. I'll make sure to respond in the shortest delay.";
+        this.element.reset();
+    }
+    #sendMail(data1) {
+        fetch(FORM_URL, {
             method: "POST",
-            body: this.params,
+            body: this.#buildParams(data1),
             headers: {
                 "Accept": "application/json"
             }
-        }).then((res)=>this.#updateFormStatus(res)).catch(()=>this.errorTarget.innerHTML = "There was an error sumbitting your form. Feel free to try again or contact me on Linkedin.");
-    }
-    #updateFormStatus(res) {
-        if (res.ok) {
-            this.errorTarget.innerText = "";
-            this.successTarget.innerText = "Your email was correctly sent. I'll make sure to respond in the shortest delay.";
-            this.element.reset();
-        } else res.json().then((data)=>{
-            if (data["errors"]) this.errorTarget.innerHTML = data["errors"].map((e)=>e["message"]).join(", ");
-            else this.errorTarget.innerHTML = "There was an error sumbitting your form. Feel free to try again or contact me on Linkedin.";
+        }).then((res)=>{
+            if (res.ok) this.#handleFormSuccess();
+            else this.#handleFormErrors(res);
+        }).catch(()=>{
+            this.errorTarget.innerHTML = ERROR_MESSAGES.submitError;
         });
     }
     #validateEmail(email) {
         return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
     }
-    #validateInputsValues(data1) {
-        if (!this.#validatePresenceOf([
-            ...data1.values()
+    #validateFormData(data2) {
+        if (!this.#validatePresence([
+            ...data2.values()
         ])) {
-            this.errorTarget.innerText = "Please fill out the form completly";
+            this.errorTarget.innerText = ERROR_MESSAGES.incompleteForm;
+            return false;
+        } else if (!this.#validateEmail(data2.get("email"))) {
+            this.errorTarget.innerText = ERROR_MESSAGES.invalidEmail;
+            return false;
+        } else if (!this.#validateMessage(data2.get("message"))) {
+            this.errorTarget.innerText = ERROR_MESSAGES.shortMessage;
             return false;
         }
-        if (!this.#validateEmail(data1.get("email"))) {
-            this.errorTarget.innerText = "Please use a valid email adress";
-            return false;
-        }
-        if (!this.#validateMessage(data1.get("message"))) {
-            this.errorTarget.innerText = "Please explain the reason you're contacting me in a bit more detail";
-            return false;
-        }
-        this.#buildParams(data1);
         return true;
     }
     #validateMessage(message) {
         return message.length > 50;
     }
-    #validatePresenceOf(values) {
+    #validatePresence(values) {
         return !values.includes("");
     }
 };
