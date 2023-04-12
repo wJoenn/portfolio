@@ -8,7 +8,6 @@ export default class extends Controller {
     this.isSafari = navigator.userAgent.indexOf("Chrome") === -1 && navigator.userAgent.indexOf("Safari") > -1
 
     window.addEventListener("pointermove", event => {
-      console.log(event.pointerType !== "touch");
       if (event.pointerType !== "touch") {
         const { clientX, clientY } = event
         this.#moveDot(clientX, clientY)
