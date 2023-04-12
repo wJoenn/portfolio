@@ -5,19 +5,31 @@ export default class extends Controller {
   static targets = ["blob", "dot"]
 
   connect() {
+    this.isSafari = navigator.userAgent.indexOf("Chrome") === -1 && navigator.userAgent.indexOf("Safari") > -1
+
     window.addEventListener("mousemove", event => {
       const { clientX, clientY } = event
 
-      this.dotTarget.style.left = `${clientX}px`
-      this.dotTarget.style.top = `${clientY}px`
+      this.#moveDot(clientX, clientY)
 
-      this.blobTarget.animate({
-        left: `${clientX}px`,
-        top: `${clientY}px`
-      }, {
-        duration: 3000,
-        fill: "forwards"
-      })
+      this.#moveBlob(clientX, clientY)
     })
+  }
+
+  #moveBlob(x, y) {
+    if(this.isSafari) {
+      this.blobTarget.style.left = `${x}px`
+      this.blobTarget.style.top = `${y}px`
+    } else {
+      this.blobTarget.animate({
+        left: `${x}px`,
+        top: `${y}px`
+      }, { duration: 3000, fill: "forwards" })
+    }
+  }
+
+  #moveDot(x, y) {
+    this.dotTarget.style.left = `${x}px`
+    this.dotTarget.style.top = `${y}px`
   }
 }
