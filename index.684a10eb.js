@@ -3334,10 +3334,13 @@ exports.default = class extends (0, _stimulus.Controller) {
     ];
     connect() {
         this.isSafari = navigator.userAgent.indexOf("Chrome") === -1 && navigator.userAgent.indexOf("Safari") > -1;
-        window.addEventListener("mousemove", (event)=>{
-            const { clientX , clientY  } = event;
-            this.#moveDot(clientX, clientY);
-            this.#moveBlob(clientX, clientY);
+        window.addEventListener("pointermove", (event)=>{
+            console.log(event.pointerType !== "touch");
+            if (event.pointerType !== "touch") {
+                const { clientX , clientY  } = event;
+                this.#moveDot(clientX, clientY);
+                this.#moveBlob(clientX, clientY);
+            }
         });
     }
     #moveBlob(x, y) {
@@ -3450,6 +3453,8 @@ exports.default = class extends (0, _stimulus.Controller) {
         "snippet"
     ];
     connect() {
+        this.html = document.querySelector("html");
+        this.body = document.querySelector("body");
         window.addEventListener("keydown", (event)=>{
             if (event.key === "Escape") this.galleryTargets.forEach((g)=>g.classList.add("hidden"));
         });
@@ -3465,11 +3470,17 @@ exports.default = class extends (0, _stimulus.Controller) {
         });
     }
     hideGallery(event) {
-        if (event.currentTarget === event.target) this.galleryTargets.forEach((g)=>g.classList.add("hidden"));
+        if (event.currentTarget === event.target) {
+            this.galleryTargets.forEach((g)=>g.classList.add("hidden"));
+            this.html.classList.remove("noscroll");
+            this.body.classList.remove("noscroll");
+        }
     }
     showGallery(event) {
         const id = event.target.dataset.target;
         this.galleryTargets.find((g)=>g.id === id).classList.remove("hidden");
+        this.html.classList.add("noscroll");
+        this.body.classList.add("noscroll");
     }
 };
 
