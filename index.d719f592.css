@@ -9125,10 +9125,16 @@ ul {
   background-color: #d3d3d380 !important;
 }
 
+@keyframes pulse {
+  50% {
+    scale: 1.1;
+  }
+}
+
 footer {
   width: 100%;
   gap: 20px;
-  padding: .5rem 1rem;
+  padding: 20px;
   position: fixed;
   bottom: 0;
 }
@@ -9173,11 +9179,16 @@ footer #internal a:nth-child(1) {
 
 footer #internal a:nth-child(2) {
   text-align: center;
+  animation: 3s linear infinite pulse;
 }
 
-footer #internal a.active {
+footer #internal .active {
   color: #9370db;
   transform: scale(1.2);
+}
+
+footer #internal .active:hover {
+  color: #9370db;
 }
 
 .gallery {
