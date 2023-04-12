@@ -7,12 +7,13 @@ export default class extends Controller {
   connect() {
     this.isSafari = navigator.userAgent.indexOf("Chrome") === -1 && navigator.userAgent.indexOf("Safari") > -1
 
-    window.addEventListener("mousemove", event => {
-      const { clientX, clientY } = event
-
-      this.#moveDot(clientX, clientY)
-
-      this.#moveBlob(clientX, clientY)
+    window.addEventListener("pointermove", event => {
+      console.log(event.pointerType !== "touch");
+      if (event.pointerType !== "touch") {
+        const { clientX, clientY } = event
+        this.#moveDot(clientX, clientY)
+        this.#moveBlob(clientX, clientY)
+      }
     })
   }
 

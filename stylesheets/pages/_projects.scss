@@ -5,26 +5,28 @@
     gap: 20px;
 
     .project {
+      border-radius: 10px;
+      box-shadow: $shadow;
       display: flex;
-      gap: 20px;
+      flex-direction: column;
       justify-content: space-between;
+      overflow: hidden;
       width: 100%;
 
-      img, .details {
-        border-radius: 10px;
-        box-shadow: $shadow;
+      &:first-of-type {
+        flex-direction: column-reverse;
       }
 
       img {
         flex-shrink: 0;
-        height: min(calc((100vh - 200px) / 2 - 10px), 300px);
         max-width: 400px;
         object-fit: cover;
         object-position: center;
+        width: 100%;
       }
 
       .details {
-        background-color: $darkgrey;
+        background-color: $background;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
@@ -41,12 +43,36 @@
         display: flex;
         gap: 20px;
 
+        font-size: 25px;
+
         a {
           transition: transform 0.3s ease;
 
           &:hover {
             transform: scale(1.2);
           }
+        }
+      }
+
+      @media screen and (min-width: $large) {
+        border-radius: none;
+        box-shadow: none;
+        flex-direction: row;
+        gap: 20px;
+
+        &:first-of-type {
+          flex-direction: row;
+        }
+
+        img, .details {
+          background-color: $darkgrey;
+          border-radius: 10px;
+          box-shadow: $shadow;
+        }
+
+        img {
+          height: min(calc((100vh - 200px) / 2 - 10px), 300px);
+          width: auto;
         }
       }
     }

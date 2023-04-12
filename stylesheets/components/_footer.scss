@@ -5,10 +5,9 @@
 }
 
 footer {
-  bottom: 0;
   gap: 20px;
   padding: 20px;
-  position: fixed;
+  position: static;
   width: 100%;
 
   #external {
@@ -28,7 +27,7 @@ footer {
   }
 
   #internal {
-    display: flex;
+    display: none;
     margin: 0 auto;
     width: max-content;
 
@@ -60,6 +59,15 @@ footer {
       &:hover {
         color: mediumpurple;
       }
+    }
+  }
+
+  @media screen and (min-width: $large) {
+    bottom: 0;
+    position: fixed;
+
+    #internal {
+      display: flex;
     }
   }
 }

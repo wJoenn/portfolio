@@ -3,37 +3,45 @@
 @import "projects";
 
 .page {
-  align-items: center;
   display: flex;
   font-size: 16px;
   justify-content: center;
+  margin-top: 50px;
   position: relative;
+
+  margin-bottom: 50px;
 
   h2 {
     flex-shrink: 0;
-    margin-top: -10px;
-    text-align: right;
     width: 110px;
   }
 
   .container {
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    gap: 20px;
     height: max-content;
-    max-height: calc(100vh - 200px);
-    translate: 0 -50px;
-    width: Min(900px, 95%);
+    // max-height: calc(100vh - 200px);
+    width: Min(900px, 85%);
   }
 
   .content {
     flex-grow: 1;
   }
 
-  @media screen and (min-width: 1500px) {
-    font-size: 19px;
+  @media screen and (min-width: $large) {
+    align-items: center;
+    margin-top: 0;
 
     h2 {
-      width: 120px;
+      margin-top: -10px;
+      text-align: right;
+    }
+
+    .container {
+      flex-direction: row;
+      gap: 50px;
+      translate: 0 -50px;
     }
   }
 }

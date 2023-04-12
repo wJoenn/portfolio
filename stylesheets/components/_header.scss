@@ -1,17 +1,40 @@
 header {
+  max-width: 100vw;
   padding: $padding;
 
   h1 {
-    display: grid;
-    font-size: 25px;
-    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Azeret Mono', monospace;
+    font-size: 18px;
 
     span {
+      display: block;
       padding: 0.5rem 20px;
+      text-align: center;
+      margin: 0 auto;
+      width: 100%;
 
       &:first-of-type {
-        border-right: 2px solid $lightgrey;
-        text-align: right;
+        font-size: 23px;
+      }
+    }
+
+    @media screen and (min-width: $large) {
+      align-items: normal;
+      display: grid;
+      font-size: 25px;
+      grid-template-columns: 1fr 1fr;
+
+      span {
+        text-align: initial;
+
+        &:first-of-type {
+          border-right: 2px solid $lightgrey;
+          font-size: inherit;
+          text-align: right;
+        }
       }
     }
   }

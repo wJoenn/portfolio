@@ -1,3 +1,9 @@
+@keyframes move {
+  50% {
+    translate: -50% 0%;
+  }
+}
+
 @keyframes rotate {
   0% {
     rotate: 0deg;
@@ -5,6 +11,7 @@
 
   50% {
     scale: 1 1.5;
+    rotate: 180deg;
   }
 
   100% {
@@ -12,24 +19,56 @@
   }
 }
 
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(179deg) scale(1, 1.5);
+  }
+
+  90% {
+    -webkit-transform: rotate(324deg) scale(1, 1.1);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
 #blob {
-  animation: rotate 20s linear infinite;
+  animation: move 20s infinite, rotate 20s linear infinite;
   aspect-ratio: 1;
   background-image: linear-gradient(to right, aquamarine, mediumpurple);
   border-radius: 50%;
-  left: 50%;
-  height: 500px;
-  position: absolute;
-  top: 50%;
-  translate: -50% -50%;
+  left: 50vw;
+  height: min(300px, calc(100vw / 3 * 2));
+  position: fixed;
+  top: 50vh;
+  translate: -50% -100%;
+  -webkit-animation: move 20s infinite, rotate 20s linear infinite, ;
 }
 
 #dot {
   background-color: $lightgrey50 !important;
   border-radius: 50%;
+  display: none;
   pointer-events: none;
   position: absolute;
   height: 5px;
   width: 5px;
   z-index: 30;
+}
+
+@media screen and (min-width: $large) {
+  #blob {
+    animation: rotate 20s linear infinite;
+    height: 500px;
+    translate: -50% -50%;
+  }
+
+  #dot {
+    display: block;
+  }
 }

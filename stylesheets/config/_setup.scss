@@ -24,16 +24,12 @@ body {
   font-family: $body-font;
   height: 1px;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 main {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
-  overflow: hidden;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
   width: 100%;
 }
 
@@ -63,14 +59,36 @@ ul {
   display: none !important;
 }
 
-#body {
-  backdrop-filter: blur(150px);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  left: 0;
+.noscroll {
+  overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10;
+}
+
+#body {
+  backdrop-filter: blur(100px);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: $large) {
+  body {
+    overflow: hidden;
+  }
+
+  main {
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+
+  #body {
+    backdrop-filter: blur(150px);
+  }
 }

@@ -57,12 +57,16 @@
         <!-- Projects section -->
         <section class="page" id="projects" data-navigation-target="section" data-controller="gallery">
           <div id="artify-gallery" class="gallery hidden" data-gallery-target="gallery" data-action="click->gallery#hideGallery">
+            <i class="fa-solid fa-xmark" data-action="click->gallery#hideGallery"></i>
+
             <div class="scroller">
               <img src="/images/artify.gif" alt="" data-gallery-target="image">
             </div>
           </div>
 
           <div id="rentart-gallery" class="gallery hidden" data-gallery-target="gallery" data-action="click->gallery#hideGallery">
+            <i class="fa-solid fa-xmark" data-action="click->gallery#hideGallery"></i>
+
             <div class="scroller">
               <img src="/images/rentart/homepage.png" alt="" id="rentart-1" data-gallery-target="image" class="rentart">
               <img src="/images/rentart/index.png" alt="" id="rentart-2" data-gallery-target="image" class="rentart hidden">
@@ -123,13 +127,13 @@
               <form data-controller="contact-form" data-action="submit->contact-form#handleSubmit">
                 <p>Or send me an email</p>
 
-                <div>
+                <div class="personnal-infos">
                   <input type="text" name="firstName" placeholder="First Name">
                   <input type="text" name="lastName" placeholder="Last Name">
                   <input type="text" name="company" placeholder="Company">
                 </div>
                 <input type="email" name="email" id="email" placeholder="Email">
-                <textarea name="message" id="message" cols="30" rows="5"></textarea>
+                <textarea name="message" id="message" cols="30" rows="5" placeholder="Message"></textarea>
 
                 <div id="notice">
                   <p data-contact-form-target="error" class="error"></p>

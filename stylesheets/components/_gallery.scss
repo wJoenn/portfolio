@@ -1,34 +1,40 @@
 .gallery {
   align-items: center;
-  background-color: rgba(24, 26, 27, 0.8);
+  background-color: rgba(24, 26, 27, 0.9);
   display: flex;
   flex-direction: column;
   gap: 20px;
   justify-content: center;
   height: 100vh;
   left: 0;
+  max-height: 100svh;
+  padding: 20px 0;
   position: fixed;
   top: 0;
   width: 100vw;
   z-index: 20;
 
+
   i {
+    font-size: 25px;
     position: absolute;
     right: 20px;
     top: 20px;
   }
 
   nav {
-    display: flex;
+    display: grid;
     gap: 20px;
+    grid-template-columns: 33% 33%;
     justify-content: center;
+
 
     img {
       border-radius: 10px;
       box-shadow: $shadow;
       filter: grayscale(1);
-      height: 100px;
       transition: transform 0.3s ease;
+      width: 100%;
 
       &:hover {
         transform: scale(1.1);
@@ -47,11 +53,37 @@
     gap: 20px;
     overflow: hidden;
 
+    box-shadow: none;
+
     img {
-      background-color: $darkgrey;
+      border-radius: 10px;
       flex-shrink: 0;
-      height: 60vh;
       object-fit: contain;
+      width: 100%;
+
+    }
+  }
+
+  @media screen and (min-width: $large) {
+    background-color: rgba(24, 26, 27, 0.8);
+    padding: 0;
+
+    i {
+      display: none;
+    }
+
+    nav {
+      display: flex;
+
+      img {
+        height: 100px;
+        width: auto;
+      }
+    }
+
+    .scroller img {
+      height: 60vh;
+      width: auto;
     }
   }
 }
