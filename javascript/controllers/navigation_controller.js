@@ -8,6 +8,10 @@ export default class extends Controller {
     event.preventDefault()
     const targetId = event.target.dataset.target
     this.sectionTargets.find(s => s.id === targetId).scrollIntoView()
+
+    setTimeout(() => {
+      this.linkTargets[1].style.animationIterationCount = 0
+    }, 500)
   }
 
   handleScroll() {
