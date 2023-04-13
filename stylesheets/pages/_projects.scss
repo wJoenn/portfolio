@@ -54,15 +54,22 @@
         }
       }
 
-      @media screen and (min-width: $large) {
-        border-radius: none;
-        box-shadow: none;
+      @media screen and (min-width: $small) {
         flex-direction: row;
-        gap: 20px;
 
         &:first-of-type {
           flex-direction: row;
         }
+
+        img {
+          height: 300px;
+        }
+      }
+
+      @media screen and (min-width: $large) {
+        border-radius: none;
+        box-shadow: none;
+        gap: 20px;
 
         img, .details {
           background-color: $darkgrey;
