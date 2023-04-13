@@ -42,6 +42,7 @@
   aspect-ratio: 1;
   background-image: linear-gradient(to right, aquamarine, mediumpurple);
   border-radius: 50%;
+  filter: blur(100px);
   left: 50vw;
   height: min(300px, calc(100vw / 3 * 2));
   position: fixed;
@@ -65,6 +66,7 @@
   #blob {
     animation: rotate 20s linear infinite;
     height: 500px;
+    filter: none;
     translate: -50% -50%;
   }
 
