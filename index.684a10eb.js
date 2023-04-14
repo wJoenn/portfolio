@@ -3335,7 +3335,6 @@ exports.default = class extends (0, _stimulus.Controller) {
     connect() {
         this.isSafari = navigator.userAgent.indexOf("Chrome") === -1 && navigator.userAgent.indexOf("Safari") > -1;
         window.addEventListener("pointermove", (event)=>{
-            console.log(event.pointerType !== "touch");
             if (event.pointerType !== "touch") {
                 const { clientX , clientY  } = event;
                 this.#moveDot(clientX, clientY);
