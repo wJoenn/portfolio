@@ -15,18 +15,26 @@ export default class extends Controller {
 
   handleClick(event) {
     this.snippetTargets.forEach(s => {
-      s === event.target ? s.classList.add("active") : s.classList.remove("active")
+      if (s === event.target) {
+        s.classList.add("active")
+      } else {
+        s.classList.remove("active")
+      }
     })
 
-    const id = event.target.dataset.target;
+    const id = event.target.dataset.target
     const images = this.imageTargets.filter(i => i.classList.contains("rentart"))
     images.forEach(i => {
-      i.id === id ? i.classList.remove("hidden") : i.classList.add("hidden")
+      if (i.id === id) {
+        i.classList.remove("hidden")
+      } else {
+        i.classList.add("hidden")
+      }
     })
   }
 
   hideGallery(event) {
-    if(event.currentTarget === event.target) {
+    if (event.currentTarget === event.target) {
       this.galleryTargets.forEach(g => g.classList.add("hidden"))
 
       this.html.classList.remove("noscroll")

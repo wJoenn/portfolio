@@ -31,7 +31,7 @@ export default class extends Controller {
 
   #handleFormErrors(res) {
     res.json().then(data => {
-      if (data["errors"]) this.errorTarget.innerHTML = data["errors"].map(e => e["message"]).join(", ")
+      if (data.errors) this.errorTarget.innerHTML = data.errors.map(e => e.message).join(", ")
       else this.errorTarget.innerHTML = ERROR_MESSAGES.submitError
     })
   }
@@ -46,7 +46,7 @@ export default class extends Controller {
     fetch(FORM_URL, {
       method: "POST",
       body: this.#buildParams(data),
-      headers: { "Accept": "application/json" }
+      headers: { Accept: "application/json" }
     }).then(res => {
       if (res.ok) this.#handleFormSuccess()
       else this.#handleFormErrors(res)
@@ -63,10 +63,14 @@ export default class extends Controller {
     if (!this.#validatePresence([...data.values()])) {
       this.errorTarget.innerText = ERROR_MESSAGES.incompleteForm
       return false
-    } else if (!this.#validateEmail(data.get("email"))) {
+    }
+
+    if (!this.#validateEmail(data.get("email"))) {
       this.errorTarget.innerText = ERROR_MESSAGES.invalidEmail
       return false
-    } else if (!this.#validateMessage(data.get("message"))) {
+    }
+
+    if (!this.#validateMessage(data.get("message"))) {
       this.errorTarget.innerText = ERROR_MESSAGES.shortMessage
       return false
     }

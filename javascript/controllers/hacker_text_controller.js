@@ -9,7 +9,7 @@ export default class extends Controller {
 
     this.#shuffleWord()
 
-    setInterval(() => this.#shuffleWord(), 10000);
+    setInterval(() => this.#shuffleWord(), 10000)
   }
 
   #shuffleWord() {
@@ -24,6 +24,6 @@ export default class extends Controller {
       if (i >= this.textValue.length) clearInterval(interval)
 
       i += 1 / 2
-    }, 30);
+    }, 30)
   }
 }

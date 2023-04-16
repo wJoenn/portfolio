@@ -17,7 +17,7 @@ export default class extends Controller {
   }
 
   #moveBlob(x, y) {
-    if(this.isSafari) {
+    if (this.isSafari) {
       this.blobTarget.style.left = `${x}px`
       this.blobTarget.style.top = `${y}px`
     } else {
