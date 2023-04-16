@@ -3391,7 +3391,7 @@ exports.default = class extends (0, _stimulus.Controller) {
     }
     #handleFormErrors(res) {
         res.json().then((data)=>{
-            if (data["errors"]) this.errorTarget.innerHTML = data["errors"].map((e)=>e["message"]).join(", ");
+            if (data.errors) this.errorTarget.innerHTML = data.errors.map((e)=>e.message).join(", ");
             else this.errorTarget.innerHTML = ERROR_MESSAGES.submitError;
         });
     }
@@ -3405,7 +3405,7 @@ exports.default = class extends (0, _stimulus.Controller) {
             method: "POST",
             body: this.#buildParams(data1),
             headers: {
-                "Accept": "application/json"
+                Accept: "application/json"
             }
         }).then((res)=>{
             if (res.ok) this.#handleFormSuccess();
@@ -3423,10 +3423,12 @@ exports.default = class extends (0, _stimulus.Controller) {
         ])) {
             this.errorTarget.innerText = ERROR_MESSAGES.incompleteForm;
             return false;
-        } else if (!this.#validateEmail(data2.get("email"))) {
+        }
+        if (!this.#validateEmail(data2.get("email"))) {
             this.errorTarget.innerText = ERROR_MESSAGES.invalidEmail;
             return false;
-        } else if (!this.#validateMessage(data2.get("message"))) {
+        }
+        if (!this.#validateMessage(data2.get("message"))) {
             this.errorTarget.innerText = ERROR_MESSAGES.shortMessage;
             return false;
         }
@@ -3460,12 +3462,14 @@ exports.default = class extends (0, _stimulus.Controller) {
     }
     handleClick(event) {
         this.snippetTargets.forEach((s)=>{
-            s === event.target ? s.classList.add("active") : s.classList.remove("active");
+            if (s === event.target) s.classList.add("active");
+            else s.classList.remove("active");
         });
         const id = event.target.dataset.target;
         const images = this.imageTargets.filter((i)=>i.classList.contains("rentart"));
         images.forEach((i)=>{
-            i.id === id ? i.classList.remove("hidden") : i.classList.add("hidden");
+            if (i.id === id) i.classList.remove("hidden");
+            else i.classList.add("hidden");
         });
     }
     hideGallery(event) {
