@@ -1,11 +1,11 @@
+// Config Files
 @import "config/variables";
 @import "config/setup";
 
-$fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/brands";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/solid";
+// External libraries
+@import "config/font_awasome";
 @import "../node_modules/aos/dist/aos.css";
 
+//CSS Partials
 @import "pages/index";
 @import "components/index";
